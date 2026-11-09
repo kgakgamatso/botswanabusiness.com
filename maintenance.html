@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-BW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YTG0n7DHL4/jmSHu/d0x+m6OqkkDQDc24hNsSyiRWEA='; style-src 'sha256-QEjLlos8SU20FHLUveueFAqUP6VzxJ/HN9f+3ThZeOs='; img-src 'self' data:; connect-src https://nqiizoimvglxkpleydth.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>We'll be right back — BotswanaBusiness.com</title>
+<style>
+:root{--paper:#f4efe6;--ink:#171411;--muted:#6f675d;--sky:#75aadb;--rule:#cfc5b3;--card:#fbf8f2;--ochre:#b4552a}
+@media (prefers-color-scheme:dark){:root{--paper:#14120f;--ink:#efe8dc;--muted:#9a9083;--rule:#3a342c;--card:#1a1714;--ochre:#e08a5c}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font:400 17px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif}
+.band{height:22px;background:linear-gradient(var(--sky) 0 6px,#fff 6px 8px,#111 8px 14px,#fff 14px 16px,var(--sky) 16px)}
+main{flex:1;width:100%;max-width:880px;margin:0 auto;padding:56px 20px}
+.brand{font:400 26px/1 Georgia,"Times New Roman",serif;display:flex;gap:10px;align-items:center}
+.seal{width:26px;height:26px;border-radius:50%;background:var(--sky);border:2px solid var(--ink);position:relative}
+.seal::after{content:"";position:absolute;left:-2px;right:-2px;top:9px;height:4px;background:var(--ink)}
+.eyebrow{font:500 12px/1.2 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:48px}
+h1{font:400 clamp(40px,7vw,76px)/.98 Georgia,"Times New Roman",serif;letter-spacing:-.02em;margin:12px 0 18px}
+h1 em{color:#2f6c9f}
+p.lede{font-size:20px;max-width:58ch}
+.box{border:1.5px solid var(--ink);background:var(--card);margin-top:32px}
+.box div{display:flex;justify-content:space-between;gap:16px;padding:14px 18px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.box div:last-child{border-bottom:0}
+.box span{font:500 12px ui-monospace,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:600;text-decoration:none;cursor:pointer;margin:24px 12px 0 0;font-size:15px}
+.btn.wa{background:#1f7a4a;border-color:#1f7a4a;color:#fff}
+.status{font:500 13px ui-monospace,Consolas,monospace;color:var(--muted);margin-top:28px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--ochre);margin-right:8px;animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+footer{border-top:1px solid var(--rule);padding:18px 20px;text-align:center;font:400 12px ui-monospace,Consolas,monospace;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="band" aria-hidden="true"></div>
+<main>
+  <div class="brand"><span class="seal" aria-hidden="true"></span>BotswanaBusiness.com</div>
+  <p class="eyebrow" id="eyebrow">Service notice</p>
+  <h1 id="title">We'll be <em>right back.</em></h1>
+  <p class="lede" id="msg">BotswanaBusiness.com is temporarily unavailable. Your listings, applications and payments are safe — nothing has been lost.</p>
+  <p id="reasonp">This can happen during planned maintenance, a network outage, or if your connection is blocking our service.</p>
+  <div class="box" role="list" aria-label="Contact our office">
+    <div role="listitem"><span>Operated by</span><b>Cyberjaya Investments (Pty) Ltd</b></div>
+    <div role="listitem"><span>Email</span><a href="mailto:admin@cyberjayainvest.com">admin@cyberjayainvest.com</a></div>
+    <div role="listitem"><span>Phone</span><a href="tel:+26777496007">+267 7749 6007</a></div>
+    <div role="listitem"><span>Hours</span><b>Mon–Fri 08:00–17:00 CAT (UTC+2)</b></div>
+  </div>
+  <a class="btn wa" href="https://wa.me/26777496007?text=Hello%20BotswanaBusiness.com%2C%20I%20could%20not%20access%20the%20website." rel="noopener noreferrer" target="_blank">WhatsApp our office</a>
+  <button class="btn" type="button" id="retry">Try again now</button>
+  <p class="status" role="status" aria-live="polite"><span class="dot" aria-hidden="true"></span><span id="st">Checking automatically every 30 seconds…</span></p>
+</main>
+<footer>© BotswanaBusiness.com · Where Botswana Does Business.</footer>
+<script>
+(function () {
+  var API = 'https://nqiizoimvglxkpleydth.supabase.co/rest/v1/rpc/pub_settings', KEY = 'sb_publishable_rL0XGfh-pw-bBBkArf1d_Q_61GRm_hD';
+  var q = new URLSearchParams(location.search);
+  // only return to in-app routes (prevents open redirects)
+  var from = q.get('from') || ''; if (!/^\?\/[A-Za-z0-9\-_/&=%.+]*$/.test(from)) from = '';
+  var reason = q.get('reason');
+  var home = location.pathname.replace(/maintenance\.html$/, '');
+  function set(id, t) { var e = document.getElementById(id); if (e) e.textContent = t; }
+  if (reason === 'scheduled') { set('eyebrow', 'Scheduled maintenance'); set('reasonp', 'We are upgrading the platform. Thank you for your patience.'); }
+  if (reason === 'unreachable') { set('eyebrow', 'Connection problem'); }
+  if (!navigator.onLine) set('reasonp', 'Your device appears to be offline. Please check your internet connection.');
+  var timer;
+  function check() {
+    set('st', 'Checking…');
+    var c = new AbortController(); var t = setTimeout(function () { c.abort(); }, 8000);
+    fetch(API, { method: 'POST', headers: { apikey: KEY, 'content-type': 'application/json' }, body: '{}', signal: c.signal, credentials: 'omit' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (s) {
+        clearTimeout(t);
+        var m = s && s.maintenance;
+        if (m && m.enabled) {
+          set('eyebrow', 'Scheduled maintenance');
+          if (m.message) set('msg', String(m.message).slice(0, 400));
+          if (m.until) set('reasonp', 'Expected back: ' + new Date(m.until).toLocaleString('en-GB', { timeZone: 'Africa/Gaborone' }) + ' CAT.');
+          set('st', 'Still under maintenance. Checking again in 30 seconds…');
+        } else { set('st', 'We are back! Taking you there…'); location.replace(home + from); }
+      })
+      .catch(function () { clearTimeout(t); set('st', 'Not available yet. Checking again in 30 seconds…'); });
+  }
+  document.getElementById('retry').addEventListener('click', function () { clearInterval(timer); check(); timer = setInterval(check, 30000); });
+  window.addEventListener('online', check);
+  check(); timer = setInterval(check, 30000);
+})();
+</script>
+</body>
+</html>

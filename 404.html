@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-BW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Nj9BnqztVrgiwVRtze/LiKX/aPxbgujsxA+CIbBMMvY='; style-src 'sha256-eToJDhhg/+0bwy1FPDLO3ABA6qu8qDUIuNb3Vr5nhzI='; img-src 'self' data:; connect-src https://nqiizoimvglxkpleydth.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="robots" content="noindex">
+<title>Redirecting — BotswanaBusiness.com</title>
+<style>body{font:17px/1.5 system-ui,sans-serif;background:#f4efe6;color:#171411;margin:0;padding:48px 20px;text-align:center}a{color:#2f6c9f}</style>
+</head>
+<body>
+<p>Finding that page… If nothing happens, <a href="/botswanabusiness.com/">go to the BotswanaBusiness.com home page</a>.</p>
+<script>
+(function () {
+  // Pretty links such as /business/acme-ltd are rewritten to the app route /?/business/acme-ltd
+  var base = '/botswanabusiness.com/';
+  var p = location.pathname;
+  if (p.indexOf(base) === 0) p = p.slice(base.length);
+  p = p.replace(/^\/+|\/+$/g, '');
+  if (!/^[A-Za-z0-9\-_/.]{0,200}$/.test(p)) p = '';
+  if (/maintenance\.html$/.test(p)) { location.replace(base + 'maintenance.html'); return; }
+  location.replace(base + (p ? '?/' + p : '') + (p && location.search ? '&' + location.search.slice(1).replace(/[^A-Za-z0-9\-_=&%.+]/g, '') : ''));
+})();
+</script>
+</body>
+</html>
