@@ -1,7 +1,7 @@
 // 267connect.com service worker: keeps the site usable offline and on weak connections.
 // Pages: network first, saved copy when offline. Libraries, map tiles and listing images: saved copy first, refreshed in the background.
 // API calls (database and functions) are never cached here; the page keeps its own small offline copy of public data.
-const V = 'bb-202611121304', RT = 'bb-rt';
+const V = 'bb-202611121536', RT = 'bb-rt';
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(V).then((c) => c.addAll(['./', 'index.html', 'maintenance.html'])).then(() => self.skipWaiting()));
 });
