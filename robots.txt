@@ -3,4 +3,5 @@ Allow: /
 Disallow: /?/admin
 Disallow: /?/track
 
+Sitemap: https://267connect.com/sitemap.xml
 Sitemap: https://nqiizoimvglxkpleydth.supabase.co/functions/v1/public-api/sitemap.xml
